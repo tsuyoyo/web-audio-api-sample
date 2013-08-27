@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"></meta>
+<meta http-equiv="content-language" content="ja"></meta>
+<script type="text/javascript" src="./js/audioplayer.js"></script>
+</head>
+<body>
+
+<h1>Web audio sample</h1>
+
+<div>
+<audio id="audioctrl" controls></audio>
+</div>
+
+<div>
+<input type="file" id="fileSelector" onchange="onSongSelected(this.files)">
+</div>
+
+<form>
+Filter type
+<select name="selector" onchange="onFilterChanged(this)">
+  <option value="-1">No filter</option>
+  <option value="0">lowpass</option>
+  <option value="1">highpass</option>
+  <option value="2">bandpass</option>
+  <option value="3">lowshelf</option>
+  <option value="4">highshel</option>
+  <option value="5">peaking</option>
+  <option value="6">notch</option>
+  <option value="7">allpass</option>
+</select>
+</form>
+
+<form>
+Binaural type
+<select name="binauralselector" onchange="onBinauralSourceChanged(this)">
+  <option value="0">No filter</option>
+  <option value="1">s1_r1_b.wav</option>
+  <option value="2">s1_r2_b.wav</option>
+  <option value="3">s1_r3_b.wav</option>
+  <option value="4">s1_r4_b.wav</option>
+  <option value="5">s2_r1_b.wav</option>
+  <option value="6">s2_r2_b.wav</option>
+  <option value="7">s2_r3_b.wav</option>
+  <option value="8">s2_r4_b.wav</option>
+  <option value="9">s3_r1_b.wav</option>
+  <option value="10">s3_r2_b.wav</option>
+  <option value="11">s3_r3_b.wav</option>
+  <option value="12">s3_r4_b.wav</option>
+</select>
+Reffered <a href="http://www.acoustics.hut.fi/projects/poririrs/">Concert Hall Impulse Responses</a>
+</form>
+
+<script type="text/javascript">
+  // Initial settings.
+  switchEqualizer(-1);
+  
+  // Connect audio filters between source and distination.
+  setupAudioPass();
+</script>
+
+</body>
+</html>
